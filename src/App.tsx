@@ -17,7 +17,7 @@ export default function App():JSX.Element {
   const [date, setDate] = useState(formatDate(getTomorrow()));
 
   const [head, setHead] = useState(
-    localHead ? JSON.parse(localHead) : '식청 열외',
+    localHead ? JSON.parse(localHead) : '식청',
   );
 
   const [preview, setPreview] = useState('');
@@ -88,8 +88,7 @@ export default function App():JSX.Element {
   const onLoad = () => {
     const value = prompt('불러올 값 입력');
     try {
-      const obj = JSON.parse(value as string);
-      setPersons(obj);
+      const obj = JSON.parse(value as string) as Person[];
       savePersons(obj);
       alert('성공');
     } catch (e) {
