@@ -6,10 +6,15 @@
         "jsx":"react",
         "strict": true,
         "allowJs": true,
+        "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
         "sourceMap": true,
-        "baseUrl": "./src",
-
+        "baseUrl": ".",
+        "paths":{
+            "~/*":[
+                "src/*"
+            ]
+        }
     },
     "include": [
         "./src/**/*"
