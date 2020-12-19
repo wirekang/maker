@@ -39,7 +39,7 @@ export default function App():JSX.Element {
         }
       });
     });
-    setResult(`${preview}\n\n아침:${checks[0]}\n\n점심:${checks[1]}\n\n저녁:${checks[2]}`);
+    setResult(`${preview}\n\n아침: ${checks[0]}\n\n점심: ${checks[1]}\n\n저녁: ${checks[2]}`);
   }, [persons]);
 
   const savePersons = (ps: Person[]) => {
