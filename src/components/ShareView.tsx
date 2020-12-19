@@ -12,7 +12,6 @@ export default function ShareView({ result }:{
 
   const onShare = () => {
     navigator.share({
-      title: '생성기',
       text: result,
     });
   };
