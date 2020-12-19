@@ -10,9 +10,10 @@ module.exports = {
   entry: {
     app: path.join(__dirname, 'src', 'index.tsx'),
   },
+  devtool:'eval-source-map',
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].bundle.js',
+    path: path.resolve(__dirname, 'doc'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

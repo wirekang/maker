@@ -33,7 +33,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'no-use-before-define': 0,
-    '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-use-before-define': 0,
     'import/extensions': 0,
   },
 };
