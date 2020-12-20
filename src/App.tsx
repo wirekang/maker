@@ -17,20 +17,22 @@ export default function App():JSX.Element {
   const [date, setDate] = useState(formatDate(getTomorrow()));
 
   const [head, setHead] = useState(
-    localHead ? JSON.parse(localHead) : '식청',
+    localHead || '식청',
   );
 
-  const [preview, setPreview] = useState('');
-
-  const [result, setResult] = useState('error');
+  const [preview, setPreview] = useState(`${genDate(new Date(date))} ${head}`);
 
   const [showEditView, setShowEditView] = useState(false);
 
   useEffect(() => {
-    setPreview(`${genDate(new Date(date))} ${head}`);
-  }, [head, date]);
+    localStorage.setItem('head', head);
+  }, [head]);
 
   useEffect(() => {
+    setPreview(`${genDate(new Date(date))} ${head}`);
+  }, [date, head]);
+
+  const getResult = ():string => {
     const checks = ['', '', ''];
     persons.forEach((person) => {
       [0, 1, 2].forEach((i) => {
@@ -39,8 +41,10 @@ export default function App():JSX.Element {
         }
       });
     });
-    setResult(`${preview}\n\n아침: ${checks[0]}\n\n점심: ${checks[1]}\n\n저녁: ${checks[2]}`);
-  }, [persons]);
+    return (
+      `${preview}\n\n아침: ${checks[0]}\n\n점심: ${checks[1]}\n\n저녁: ${checks[2]}`
+    );
+  };
 
   const savePersons = (ps: Person[]) => {
     localStorage.setItem('persons', JSON.stringify(ps));
@@ -118,7 +122,7 @@ export default function App():JSX.Element {
           onClick={onReset}
         />
 
-        <ShareView result={result} />
+        <ShareView getResult={getResult} />
 
         <ToggleEdit
           type="button"

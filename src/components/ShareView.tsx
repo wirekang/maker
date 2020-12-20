@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function ShareView({ result }:{
-    result:string,
+export default function ShareView({ getResult }:{
+    getResult:()=>string,
   }):JSX.Element {
   const onCopy = () => {
-    navigator.clipboard.writeText(result).then(() => {
+    navigator.clipboard.writeText(getResult()).then(() => {
       alert('복사 완료');
     });
   };
 
   const onShare = () => {
     navigator.share({
-      text: result,
+      text: getResult(),
     });
   };
 
