@@ -46,11 +46,12 @@ const Container = styled.div`
 `;
 
 const Remove = styled.input`
-  width:20px
+  width:20px;
+  font-size:12px;
 `;
 
 const Blank = styled.div`
-  width:20px
+  width:20px;
 `;
 
 const ID = styled.div`
